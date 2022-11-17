@@ -3,20 +3,20 @@ import { MagicString, compileScript, parse } from '@vue/compiler-sfc'
 import type { Options } from './types'
 
 export default createUnplugin<Options>((options) => {
-  let pageRouteMap: Map<string, any> = new Map()
+  let routeMap: Map<string, any> = new Map()
 
   return [
     options.plugin,
     {
       name: 'unplugin-vue-router-extend',
       async buildStart() {
-        pageRouteMap = options.plugin.api?.getRouteMap()
+        routeMap = options.plugin.api?.getRouteMap()
       },
       transformInclude(id) {
-        return pageRouteMap?.size && id.endsWith('.vue')
+        return id.endsWith('.vue')
       },
       transform(code, id) {
-        const name = pageRouteMap.get(id)?.name
+        const name = routeMap?.get(id)?.name
         if (!name)
           return
         const { descriptor } = parse(code)
@@ -24,7 +24,7 @@ export default createUnplugin<Options>((options) => {
           return
 
         const lang = descriptor.scriptSetup
-        && compileScript(descriptor, { id }).attrs.lang
+          && compileScript(descriptor, { id }).attrs.lang
         const s = new MagicString(code)
         s.appendLeft(
           0,
