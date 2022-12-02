@@ -4,6 +4,7 @@ import glob from 'fast-glob'
 import { build } from 'vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import vueRouterExtend from '../src/vite'
+import { getRouteMap } from '../src'
 
 describe('generate component name', async () => {
   const root = resolve(__dirname, '../playground/src/pages')
@@ -13,6 +14,7 @@ describe('generate component name', async () => {
     onlyFiles: true,
   })
 
+  const routeMap = new Map()
   for (const file of files) {
     it(file.replace(/\\/g, '/'), async () => {
       const filepath = resolve(root, file)
@@ -29,11 +31,14 @@ describe('generate component name', async () => {
           },
         },
         plugins: [
+          VueRouter({
+            routesFolder: root,
+            getRouteName: getRouteMap(routeMap),
+            dts: false,
+            exclude: ['**/__test__/**'],
+          }),
           vueRouterExtend({
-            plugin: VueRouter({
-              routesFolder: root,
-              exclude: ['**/__test__/**'],
-            }),
+            routeMap,
           }),
           {
             name: 'to-string',

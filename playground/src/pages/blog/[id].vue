@@ -15,9 +15,9 @@ defineProps({
 
 <route>
 {
-  name: 'blog-id',
-  meta: {
-    requiresAuth: false,
-  },
+  "name": "blog-id",
+  "meta":{
+    "requiresAuth": false
+  }
 }
 </route>
