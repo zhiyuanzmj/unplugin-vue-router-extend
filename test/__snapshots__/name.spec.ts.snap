@@ -141,7 +141,7 @@ export {
 `;
 
 exports[`generate component name > blog/[id].vue 1`] = `
-"const e = \`<script setup lang=\\"ts\\">
+"const e = \`<script setup lang=\\"tsx\\">
 defineProps({
   id: String,
 })
