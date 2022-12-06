@@ -5,20 +5,21 @@
   "packageManager": "pnpm@7.1.1",
   "description": "Register global imports on demand for Vite and Webpack",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/unplugin-vue-router-extend#readme",
+  "homepage": "https://github.com/zhiyuanzmj/unplugin-vue-router-extend#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-vue-router-extend.git"
+    "url": "git+https://github.com/zhiyuanzmj/unplugin-vue-router-extend.git"
   },
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-vue-router-extend/issues"
+    "url": "https://github.com/zhiyuanzmj/unplugin-vue-router-extend/issues"
   },
   "keywords": [
     "unplugin",
     "vite",
     "webpack",
     "rollup",
-    "transform"
+    "transform",
+    "unplugin-vue-router"
   ],
   "exports": {
     ".": {
@@ -84,7 +85,7 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.33.1",
+    "@zhiyuanzmj/eslint-config": "^0.33.1",
     "@types/node": "^18.11.10",
     "@vue/compiler-sfc": "^3.2.45",
     "bumpp": "^8.2.1",
