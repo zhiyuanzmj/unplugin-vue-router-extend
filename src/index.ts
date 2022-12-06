@@ -1,7 +1,7 @@
 import { createUnplugin } from 'unplugin'
 import { MagicString, compileScript, parse } from '@vue/compiler-sfc'
-import type { TreeNode } from 'unplugin-vue-router'
 import { getFileBasedRouteName } from 'unplugin-vue-router'
+import type { TreeNode } from 'unplugin-vue-router'
 import type { Options } from './types'
 
 export default createUnplugin<Options>((options) => {
@@ -42,21 +42,64 @@ export default /*#__PURE__*/ defineComponent({
   }
 })
 
-export const getRouteMap = (routeMap: Map<string, TreeNode>) => (node: TreeNode) => {
-  function _getRouteMap(node: TreeNode) {
-    node.children.forEach((i) => {
-      if (i.value.filePaths.size)
-        routeMap.set(i.value.filePaths.get('default')!, i)
-      if (i.children.size)
-        _getRouteMap(i)
+export function getNuxtStyleRouteName(node: TreeNode): string {
+  if (node.parent?.isRoot() && node.value.pathSegment === '')
+    return 'index'
+
+  let name = node.value.subSegments
+    .map((segment) => {
+      if (typeof segment === 'string')
+        return `-${segment}`
+
+      // else it's a param
+      return segment.paramName
     })
-  }
+    .join('')
 
-  function getRoot(node: TreeNode): TreeNode {
-    return node.parent ? getRoot(node.parent) : node
-  }
-  if (!routeMap.size)
-    _getRouteMap(getRoot(node))
+  if (node.value.filePaths.size && node.children.has('index'))
+    name += '/'
 
-  return getFileBasedRouteName(node)
+  const parent = node.parent
+  return (
+    (parent && !parent.isRoot()
+      ? getNuxtStyleRouteName(parent).replace(/\/$/, '')
+      : '') + name
+  ).replace(/^-|-$/, '')
 }
+
+export const getRouteMap = ({
+  routeMap = new Map<string, TreeNode>(),
+  nuxtStyle = true,
+}, getRouteName = nuxtStyle ? getNuxtStyleRouteName : getFileBasedRouteName) =>
+  (node: TreeNode) => {
+    function _getRouteMap(node: TreeNode) {
+      node.children.forEach((i) => {
+        if (i.value.filePaths.get('default')) {
+          routeMap.set(i.value.filePaths.get('default')!, i)
+        }
+        else if (nuxtStyle) {
+          i.parent?.children.delete(i.value.rawSegment || '')
+          i.children.forEach((child) => {
+            const block: any = {
+              path: i.path + (child.path ? `/${child.path}` : ''),
+            }
+            if (i.value.isParam() && !child.path)
+              block.props = true
+            child.setCustomRouteBlock(child.path, block)
+            i.parent?.children.set(i.path, child)
+          })
+        }
+
+        if (i.children.size)
+          _getRouteMap(i)
+      })
+    }
+
+    function getRoot(node: TreeNode): TreeNode {
+      return node.parent ? getRoot(node.parent) : node
+    }
+    if (!routeMap.size)
+      _getRouteMap(getRoot(node))
+
+    return getRouteName(node)
+  }
