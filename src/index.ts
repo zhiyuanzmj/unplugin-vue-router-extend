@@ -7,6 +7,7 @@ import type { Options } from './types'
 export default createUnplugin<Options>((options) => {
   return {
     name: 'unplugin-vue-router-extend',
+    enforce: 'pre',
     transformInclude(id) {
       return id.endsWith('.vue') && options.routeMap?.get(id)
     },
@@ -69,7 +70,7 @@ export function getNuxtStyleRouteName(node: TreeNode): string {
 
 export const getRouteMap = ({
   routeMap = new Map<string, TreeNode>(),
-  nuxtStyle = true,
+  nuxtStyle = false,
 }, getRouteName = nuxtStyle ? getNuxtStyleRouteName : getFileBasedRouteName) =>
   (node: TreeNode) => {
     function _getRouteMap(node: TreeNode) {
