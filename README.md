@@ -2,8 +2,13 @@
 
 [![NPM version](https://img.shields.io/npm/v/unplugin-vue-router-extend?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-vue-router-extend)
 
-Automatically generate component's name based on `route.name` for `keep-alive`.
+- Automatically generate component's name based on `route.name`.  
+
 <img width="1255" alt="image" src="https://user-images.githubusercontent.com/32807958/205870943-dd2b6094-a4dd-4927-a417-57350fd7773b.png">
+
+- Support NuxtJs routing file system when `nuxtStyle` is true
+
+<img width="1095" alt="image" src="https://user-images.githubusercontent.com/32807958/205881051-446d17f7-9275-4329-b98c-d0e10594e1f4.png">
 
 ## Install
 
@@ -11,13 +16,12 @@ Automatically generate component's name based on `route.name` for `keep-alive`.
 npm i unplugin-vue-router-extend
 ```
 
-<details>
 <summary>Vite</summary><br>
 
 ```ts
 // vite.config.ts
-import VueRouter from 'unplugin-vue-router/vite'
 // import { getPascalCaseRouteName } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
 import VueRouterExtend from 'unplugin-vue-router-extend/vite'
 import { getRouteMap } from 'unplugin-vue-router-extend'
 
@@ -29,14 +33,16 @@ export default defineConfig({
       getRouteName: getRouteMap({
         routeMap,
         /**
-         * Generate the route name in nuxt style
+         * Generate nuxt style route name
+         *
          * @default false
          */
         nuxtStyle: true,
       },
       /**
        * You can use the second parameter to customize the route name override method
-       * @default `getFileBasedRouteName` If nuxtStyle is true the default value is `getNuxtStyleRouteName`
+       *
+       * @default `getFileBasedRouteName` - If nuxtStyle is true the default value is `getNuxtStyleRouteName`
        */
       // getPascalCaseRouteName
       ),
@@ -48,9 +54,10 @@ export default defineConfig({
 })
 ```
 
+
 Example: [`playground/`](./playground/)
 
-<br></details>
+<br>
 
 <details>
 <summary>Rollup</summary><br>

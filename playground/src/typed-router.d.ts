@@ -35,21 +35,19 @@ import type {
 
 declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
-    'homepage': RouteRecordInfo<'homepage', '/', Record<never, never>, Record<never, never>>,
-    '/__test__/': RouteRecordInfo<'/__test__/', '/__test__', Record<never, never>, Record<never, never>>,
-    '/[...all]': RouteRecordInfo<'/[...all]', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
-    '/[sensor]': RouteRecordInfo<'/[sensor]', '/:sensor', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>,
-    '/[sensor]/current': RouteRecordInfo<'/[sensor]/current', '/:sensor/current', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>,
-    '/about': RouteRecordInfo<'/about', '/about', Record<never, never>, Record<never, never>>,
-    '/about/': RouteRecordInfo<'/about/', '/about', Record<never, never>, Record<never, never>>,
+    'index': RouteRecordInfo<'index', '/', Record<never, never>, Record<never, never>>,
+    'all': RouteRecordInfo<'all', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
+    'sensor': RouteRecordInfo<'sensor', '/:sensor', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>,
+    'sensor-current': RouteRecordInfo<'sensor-current', '/:sensor/current', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>,
+    'about/': RouteRecordInfo<'about/', '/about', Record<never, never>, Record<never, never>>,
+    'about': RouteRecordInfo<'about', '/about', Record<never, never>, Record<never, never>>,
     'about-user-id': RouteRecordInfo<'about-user-id', '/about/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    '/about/[id]/more': RouteRecordInfo<'/about/[id]/more', '/about/:id/more', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    '/about/[id]/nested': RouteRecordInfo<'/about/[id]/nested', '/about/:id/nested', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    '/blog/': RouteRecordInfo<'/blog/', '/blog', Record<never, never>, Record<never, never>>,
+    'about-id-more': RouteRecordInfo<'about-id-more', '/about/:id/more', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    'about-id-nested': RouteRecordInfo<'about-id-nested', '/about/:id/nested', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    'blog': RouteRecordInfo<'blog', '/blog', Record<never, never>, Record<never, never>>,
     'blog-id': RouteRecordInfo<'blog-id', '/blog/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    '/blog/today/': RouteRecordInfo<'/blog/today/', '/blog/today', Record<never, never>, Record<never, never>>,
-    '/blog/today/[...all]': RouteRecordInfo<'/blog/today/[...all]', '/blog/today/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
-    '/components': RouteRecordInfo<'/components', '/components', Record<never, never>, Record<never, never>>,
+    'blog-today': RouteRecordInfo<'blog-today', '/blog/today//blog/today', Record<never, never>, Record<never, never>>,
+    'components': RouteRecordInfo<'components', '/components', Record<never, never>, Record<never, never>>,
   }
 }
 

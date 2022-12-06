@@ -13,8 +13,9 @@ export default defineConfig({
     Vue(),
     vueJsx(),
     VueRouter({
+      exclude: ['**/__test__/**'],
       dts: './src/typed-router.d.ts',
-      getRouteName: getRouteMap({ routeMap }),
+      getRouteName: getRouteMap({ routeMap, nuxtStyle: true }),
     }),
     VueRouterExtend({
       routeMap,
