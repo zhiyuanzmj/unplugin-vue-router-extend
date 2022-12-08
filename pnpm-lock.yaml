@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.33.1
+      '@types/lodash-es': ^4.17.6
       '@types/node': ^18.11.10
       '@vue/compiler-sfc': ^3.2.45
       bumpp: ^8.2.1
@@ -12,6 +13,7 @@ importers:
       eslint: ^8.28.0
       esno: ^0.16.3
       fast-glob: ^3.2.12
+      lodash-es: ^4.17.21
       nodemon: ^2.0.20
       rimraf: ^3.0.2
       rollup: ^3.5.1
@@ -24,10 +26,12 @@ importers:
       vue: ^3.2.45
       webpack: ^5.75.0
     dependencies:
+      lodash-es: 4.17.21
       unplugin: 1.0.0
       unplugin-vue-router: 0.2.3
     devDependencies:
       '@antfu/eslint-config': 0.33.1_hsf322ms6xhhd4b5ne6lb74y4a
+      '@types/lodash-es': 4.17.6
       '@types/node': 18.11.10
       '@vue/compiler-sfc': 3.2.45
       bumpp: 8.2.1
@@ -661,6 +665,16 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: true
+
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -3042,6 +3056,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}

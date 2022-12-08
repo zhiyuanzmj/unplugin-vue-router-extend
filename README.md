@@ -6,9 +6,28 @@
 
 <img width="1255" alt="image" src="https://user-images.githubusercontent.com/32807958/205870943-dd2b6094-a4dd-4927-a417-57350fd7773b.png">
 
-- Support NuxtJs routing file system when `nuxtStyle` is true
+- Support NuxtJs-style route name when `nuxtStyle` is true
 
-<img width="1095" alt="image" src="https://user-images.githubusercontent.com/32807958/205881051-446d17f7-9275-4329-b98c-d0e10594e1f4.png">
+``` ts
+declare module 'vue-router/auto/routes' {
+  export interface RouteNamedMap {
+    'index': RouteRecordInfo<'index', '/', Record<never, never>, Record<never, never>>
+    'all': RouteRecordInfo<'all', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>
+    'sensor': RouteRecordInfo<'sensor', '/:sensor', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>
+    'sensor-current': RouteRecordInfo<'sensor-current', '/:sensor/current', { sensor: ParamValue<true> }, { sensor: ParamValue<false> }>
+    'about/': RouteRecordInfo<'about/', '/about', Record<never, never>, Record<never, never>>
+    'about': RouteRecordInfo<'about', '/about', Record<never, never>, Record<never, never>>
+    'about-user-id': RouteRecordInfo<'about-user-id', '/about/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>
+    'about-id-more': RouteRecordInfo<'about-id-more', '/about/:id/more', { id: ParamValue<true> }, { id: ParamValue<false> }>
+    'about-id-nested': RouteRecordInfo<'about-id-nested', '/about/:id/nested', { id: ParamValue<true> }, { id: ParamValue<false> }>
+    'blog': RouteRecordInfo<'blog', '/blog', Record<never, never>, Record<never, never>>
+    'blog-id': RouteRecordInfo<'blog-id', '/blog/:id2', { id2: ParamValue<true> }, { id2: ParamValue<false> }>
+    'blog-today': RouteRecordInfo<'blog-today', '/blog/today', Record<never, never>, Record<never, never>>
+    'blog-today-all': RouteRecordInfo<'blog-today-all', '/blog/today/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>
+    'components': RouteRecordInfo<'components', '/components', Record<never, never>, Record<never, never>>
+  }
+}
+```
 
 ## Install
 
@@ -23,26 +42,27 @@ npm i unplugin-vue-router-extend
 // import { getPascalCaseRouteName } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import VueRouterExtend from 'unplugin-vue-router-extend/vite'
-import { getRouteMap } from 'unplugin-vue-router-extend'
+import { getRouteName } from 'unplugin-vue-router-extend'
 
 const routeMap = new Map()
 export default defineConfig({
   plugins: [
     /** */
     VueRouter({
-      getRouteName: getRouteMap({
+      getRouteName: getRouteName({
         routeMap,
         /**
-         * Generate nuxt style route name
+         * Generate NuxtJs-style route name
          *
          * @default false
          */
         nuxtStyle: true,
       },
       /**
-       * You can use the second parameter to customize the route name override method
+       * Customize the route name override method
        *
-       * @default `getFileBasedRouteName` - If nuxtStyle is true the default value is `getNuxtStyleRouteName`
+       * @default `getFileBasedRouteName`
+       * If nuxtStyle is true the default value is `getNuxtStyleRouteName`
        */
       // getPascalCaseRouteName
       ),
@@ -66,14 +86,14 @@ Example: [`playground/`](./playground/)
 // rollup.config.js
 import VueRouter from 'unplugin-vue-router/vite'
 import VueRouterExtend from 'unplugin-vue-router-extend/vite'
-import { getRouteMap } from 'unplugin-vue-router-extend'
+import { getRouteName } from 'unplugin-vue-router-extend'
 
 const routeMap = new Map()
 export default {
   plugins: [
     /* ... */
     VueRouter({
-      getRouteName: getRouteMap({ routeMap, }),
+      getRouteName: getRouteName({ routeMap }),
     }),
     VueRouterExtend({
       routeMap,
@@ -95,7 +115,7 @@ module.exports = {
   /* ... */
   plugins: [
     require('unplugin-vue-router/webpack')({
-      getRouteName: getRouteMap({ routeMap, }),
+      getRouteName: getRouteName({ routeMap }),
     }),
     require('unplugin-vue-router-extend/webpack')({
       routeMap
@@ -118,7 +138,7 @@ export default {
   buildModules: [
     /* ... */
     ['unplugin-vue-router/nuxt', {
-      getRouteName: getRouteMap({ routeMap }),
+      getRouteName: getRouteName({ routeMap }),
     }],
     ['unplugin-vue-router-extend/nuxt', {
       routeMap

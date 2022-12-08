@@ -46,7 +46,8 @@ declare module 'vue-router/auto/routes' {
     'about-id-nested': RouteRecordInfo<'about-id-nested', '/about/:id/nested', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'blog': RouteRecordInfo<'blog', '/blog', Record<never, never>, Record<never, never>>,
     'blog-id': RouteRecordInfo<'blog-id', '/blog/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
-    'blog-today': RouteRecordInfo<'blog-today', '/blog/today//blog/today', Record<never, never>, Record<never, never>>,
+    'blog-today': RouteRecordInfo<'blog-today', '/blog/today', Record<never, never>, Record<never, never>>,
+    'blog-today-all': RouteRecordInfo<'blog-today-all', '/blog/today/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
     'components': RouteRecordInfo<'components', '/components', Record<never, never>, Record<never, never>>,
   }
 }

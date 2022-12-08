@@ -85,11 +85,13 @@
     "test": "vitest"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "unplugin": "^1.0.0",
     "unplugin-vue-router": "^0.2.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
+    "@types/lodash": "^4.17.6",
     "@types/node": "^18.11.10",
     "@vue/compiler-sfc": "^3.2.45",
     "bumpp": "^8.2.1",

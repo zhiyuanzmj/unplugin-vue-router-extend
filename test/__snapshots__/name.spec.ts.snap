@@ -1,12 +1,18 @@
 // Vitest Snapshot v1
 
 exports[`generate component name > [...all].vue 1`] = `
-"const t = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /*#__PURE__*/ defineComponent({
+  name: 'all'
+})
+<\\\\/script>
+<template>
   <div>...all route</div>
 </template>
 \`;
 export {
-  t as default
+  e as default
 };
 "
 `;
@@ -234,7 +240,7 @@ export {
 `;
 
 exports[`generate component name > index.vue 1`] = `
-"const e = \`<template>
+"const r = \`<template>
   <div>
     <p>index.vue</p>
     <router-link to=\\"/blog\\">
@@ -266,7 +272,6 @@ exports[`generate component name > index.vue 1`] = `
 
 <route lang=\\"json\\">
 {
-  \\"name\\": \\"homepage\\",
   \\"meta\\": {
     \\"requiresAuth\\": false
   }
@@ -274,7 +279,15 @@ exports[`generate component name > index.vue 1`] = `
 </route>
 \`;
 export {
-  e as default
+  r as default
+};
+"
+`;
+
+exports[`generate component name > typed-router.d.ts 1`] = `
+"const t = \\"\\";
+export {
+  t as default
 };
 "
 `;

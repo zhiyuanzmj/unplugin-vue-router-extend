@@ -3,7 +3,7 @@ import Inspect from 'vite-plugin-inspect'
 import VueRouter from 'unplugin-vue-router/vite'
 import Vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { getRouteMap } from '../src'
+import { getRouteName } from '../src'
 import VueRouterExtend from '../src/vite'
 
 const routeMap = new Map()
@@ -15,7 +15,10 @@ export default defineConfig({
     VueRouter({
       exclude: ['**/__test__/**'],
       dts: './src/typed-router.d.ts',
-      getRouteName: getRouteMap({ routeMap, nuxtStyle: true }),
+      getRouteName: getRouteName({
+        routeMap,
+        nuxtStyle: true,
+      }),
     }),
     VueRouterExtend({
       routeMap,
