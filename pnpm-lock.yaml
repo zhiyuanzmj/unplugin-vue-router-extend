@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.33.1
+      '@types/lodash': ^4.14.191
       '@types/lodash-es': ^4.17.6
       '@types/node': ^18.11.10
       '@vue/compiler-sfc': ^3.2.45
@@ -13,6 +14,7 @@ importers:
       eslint: ^8.28.0
       esno: ^0.16.3
       fast-glob: ^3.2.12
+      lodash: ^4.17.21
       lodash-es: ^4.17.21
       nodemon: ^2.0.20
       rimraf: ^3.0.2
@@ -26,11 +28,13 @@ importers:
       vue: ^3.2.45
       webpack: ^5.75.0
     dependencies:
+      lodash: 4.17.21
       lodash-es: 4.17.21
       unplugin: 1.0.0
       unplugin-vue-router: 0.2.3
     devDependencies:
       '@antfu/eslint-config': 0.33.1_hsf322ms6xhhd4b5ne6lb74y4a
+      '@types/lodash': 4.14.191
       '@types/lodash-es': 4.17.6
       '@types/node': 18.11.10
       '@vue/compiler-sfc': 3.2.45
@@ -3071,7 +3075,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /loupe/2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
