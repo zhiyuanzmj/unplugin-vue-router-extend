@@ -1,6 +1,6 @@
 import { getFileBasedRouteName } from 'unplugin-vue-router'
 import type { TreeNode } from 'unplugin-vue-router'
-import { debounce } from 'lodash-es'
+import { debounce } from 'lodash-unified'
 
 export function getNuxtStyleRouteName(node: TreeNode): string {
   if (node.parent?.isRoot() && node.value.pathSegment === '')
