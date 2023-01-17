@@ -24,7 +24,7 @@ export default createUnplugin<Options>(options => ({
       0,
 `<script${lang ? ` lang="${lang}"` : ''}>
 import { defineComponent } from 'vue'
-export default /*#__PURE__*/ defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: '${name}'
 })
 </script>\n`,
