@@ -1,9 +1,9 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`generate component name > [...all].vue 1`] = `
 "const e = \`<script>
 import { defineComponent } from 'vue'
-export default /*#__PURE__*/ defineComponent({
+export default /* @__PURE__ */ defineComponent({
   name: 'all'
 })
 <\\\\/script>
@@ -18,7 +18,13 @@ export {
 `;
 
 exports[`generate component name > [sensor].vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'sensor'
+})
+<\\\\/script>
+<template>
   nested dynamic view:
   <router-view />
 </template>
@@ -30,7 +36,13 @@ export {
 `;
 
 exports[`generate component name > [sensor]/current.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'sensor-current'
+})
+<\\\\/script>
+<template>
   <p>/[sensor]/current.vue</p>
 </template>
 \`;
@@ -52,7 +64,13 @@ export {
 `;
 
 exports[`generate component name > about.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'about/'
+})
+<\\\\/script>
+<template>
   <div>
     nested about view:
     <router-view />
@@ -71,7 +89,13 @@ export {
 `;
 
 exports[`generate component name > about/[id].vue 1`] = `
-"const e = \`<script setup lang=\\"ts\\">
+"const e = \`<script lang=\\"ts\\">
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'about-user-id'
+})
+<\\\\/script>
+<script setup lang=\\"ts\\">
 defineProps({
   id: String,
 })
@@ -105,7 +129,13 @@ export {
 `;
 
 exports[`generate component name > about/[id]/more.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'about-id-more'
+})
+<\\\\/script>
+<template>
   <div class=\\"deep-more\\">
     deep nested: about/[id]/more.vue
   </div>
@@ -118,7 +148,13 @@ export {
 `;
 
 exports[`generate component name > about/[id]/nested.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'about-id-nested'
+})
+<\\\\/script>
+<template>
   <div class=\\"deep-nested\\">
     deep nested: about/[id]/nested.vue
   </div>
@@ -131,7 +167,13 @@ export {
 `;
 
 exports[`generate component name > about/index.vue 1`] = `
-"const t = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'about'
+})
+<\\\\/script>
+<template>
   <div>
     about/index.vue
     <router-link to=\\"/about/1b234bk12b3\\">
@@ -141,13 +183,19 @@ exports[`generate component name > about/index.vue 1`] = `
 </template>
 \`;
 export {
-  t as default
+  e as default
 };
 "
 `;
 
 exports[`generate component name > blog/[id].vue 1`] = `
-"const e = \`<script setup lang=\\"tsx\\">
+"const e = \`<script lang=\\"tsx\\">
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'blog-id'
+})
+<\\\\/script>
+<script setup lang=\\"tsx\\">
 defineProps({
   id: String,
 })
@@ -178,7 +226,13 @@ export {
 `;
 
 exports[`generate component name > blog/index.vue 1`] = `
-"const o = \`<template>
+"const o = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'blog'
+})
+<\\\\/script>
+<template>
   <div>
     blog/index.vue
     <router-link to=\\"/blog/1b234bk12b3\\">
@@ -200,18 +254,30 @@ export {
 `;
 
 exports[`generate component name > blog/today/[...all].vue 1`] = `
-"const t = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'blog-today-all'
+})
+<\\\\/script>
+<template>
   <div>blog/today ...all route</div>
 </template>
 \`;
 export {
-  t as default
+  e as default
 };
 "
 `;
 
 exports[`generate component name > blog/today/index.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'blog-today'
+})
+<\\\\/script>
+<template>
   <div>
     blog/today/index.vue
   </div>
@@ -224,7 +290,13 @@ export {
 `;
 
 exports[`generate component name > components.vue 1`] = `
-"const e = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'components'
+})
+<\\\\/script>
+<template>
   <h1>Test Components name</h1>
 </template>
 
@@ -240,7 +312,13 @@ export {
 `;
 
 exports[`generate component name > index.vue 1`] = `
-"const r = \`<template>
+"const e = \`<script>
+import { defineComponent } from 'vue'
+export default /* @__PURE__ */ defineComponent({
+  name: 'index'
+})
+<\\\\/script>
+<template>
   <div>
     <p>index.vue</p>
     <router-link to=\\"/blog\\">
@@ -279,15 +357,7 @@ exports[`generate component name > index.vue 1`] = `
 </route>
 \`;
 export {
-  r as default
-};
-"
-`;
-
-exports[`generate component name > typed-router.d.ts 1`] = `
-"const t = \\"\\";
-export {
-  t as default
+  e as default
 };
 "
 `;

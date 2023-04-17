@@ -6,7 +6,7 @@
 
 <img width="1255" alt="image" src="https://user-images.githubusercontent.com/32807958/205870943-dd2b6094-a4dd-4927-a417-57350fd7773b.png">
 
-- Support NuxtJs-style route name when `nuxtStyle` is true
+- Support `getNuxtStyleRouteName` method to generate NuxtJs-style route name
 
 ``` ts
 declare module 'vue-router/auto/routes' {
@@ -42,30 +42,20 @@ npm i unplugin-vue-router-extend
 // import { getPascalCaseRouteName } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import VueRouterExtend from 'unplugin-vue-router-extend/vite'
-import { getRouteName } from 'unplugin-vue-router-extend'
+import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
 
 const routeMap = new Map()
 export default defineConfig({
   plugins: [
     /** */
     VueRouter({
-      getRouteName: getRouteName({
-        routeMap,
-        /**
-         * Generate NuxtJs-style route name
-         *
-         * @default false
-         */
-        nuxtStyle: true,
+       getRouteName: (node: any) => {
+        if (!routeMap.size) {
+          for (const [key, value] of node.parent?.map)
+            routeMap.set(key, value)
+        }
+        return getNuxtStyleRouteName(node)
       },
-      /**
-       * Customize the route name override method
-       *
-       * @default `getFileBasedRouteName`
-       * If nuxtStyle is true the default value is `getNuxtStyleRouteName`
-       */
-      // getPascalCaseRouteName
-      ),
     }),
     VueRouterExtend({
       routeMap,
@@ -86,14 +76,20 @@ Example: [`playground/`](./playground/)
 // rollup.config.js
 import VueRouter from 'unplugin-vue-router/vite'
 import VueRouterExtend from 'unplugin-vue-router-extend/vite'
-import { getRouteName } from 'unplugin-vue-router-extend'
+import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
 
 const routeMap = new Map()
 export default {
   plugins: [
     /* ... */
     VueRouter({
-      getRouteName: getRouteName({ routeMap }),
+      getRouteName: (node: any) => {
+        if (!routeMap.size) {
+          for (const [key, value] of node.parent?.map)
+            routeMap.set(key, value)
+        }
+        return getNuxtStyleRouteName(node)
+      },
     }),
     VueRouterExtend({
       routeMap,
@@ -110,12 +106,20 @@ export default {
 
 ```ts
 // webpack.config.js
+import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
+
 const routeMap = new Map()
 module.exports = {
   /* ... */
   plugins: [
     require('unplugin-vue-router/webpack')({
-      getRouteName: getRouteName({ routeMap }),
+      getRouteName: (node: any) => {
+        if (!routeMap.size) {
+          for (const [key, value] of node.parent?.map)
+            routeMap.set(key, value)
+        }
+        return getNuxtStyleRouteName(node)
+      },
     }),
     require('unplugin-vue-router-extend/webpack')({
       routeMap
@@ -132,13 +136,20 @@ module.exports = {
 ```ts
 // nuxt.config.js
 import VueRouter from 'unplugin-vue-router/vite'
+import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
 
 const routeMap = new Map()
 export default {
   buildModules: [
     /* ... */
     ['unplugin-vue-router/nuxt', {
-      getRouteName: getRouteName({ routeMap }),
+      getRouteName: (node: any) => {
+        if (!routeMap.size) {
+          for (const [key, value] of node.parent?.map)
+            routeMap.set(key, value)
+        }
+        return getNuxtStyleRouteName(node)
+      },
     }],
     ['unplugin-vue-router-extend/nuxt', {
       routeMap

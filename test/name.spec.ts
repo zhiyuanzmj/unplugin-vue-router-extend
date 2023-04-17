@@ -4,7 +4,7 @@ import glob from 'fast-glob'
 import { build } from 'vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import vueRouterExtend from '../src/vite'
-import { getRouteName } from '../src'
+import { getNuxtStyleRouteName } from '../src'
 
 describe('generate component name', async () => {
   const root = resolve(__dirname, '../playground/src/pages')
@@ -33,7 +33,13 @@ describe('generate component name', async () => {
         plugins: [
           VueRouter({
             routesFolder: root,
-            getRouteName: getRouteName({ routeMap, nuxtStyle: true }),
+            getRouteName: (node: any) => {
+              if (!routeMap.size) {
+                for (const [key, value] of node.parent?.map)
+                  routeMap.set(key, value)
+              }
+              return getNuxtStyleRouteName(node)
+            },
             dts: resolve(root, '../typed-router.d.ts'),
             exclude: ['**/__test__/**'],
           }),

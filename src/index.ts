@@ -1,5 +1,5 @@
 import { createUnplugin } from 'unplugin'
-import { MagicString, compileScript, parse } from '@vue/compiler-sfc'
+import { MagicString, addNormalScript, getTransformResult, parseSFC } from '@vue-macros/common'
 import type { Options } from './types'
 export * from './utils'
 
@@ -13,29 +13,24 @@ export default createUnplugin<Options>(options => ({
     const name = options.routeMap.get(id)?.name
     if (!name)
       return
-    const { descriptor } = parse(code)
-    if (descriptor.script)
+
+    const sfc = parseSFC(code, id)
+    if (sfc.script)
       return
 
-    const lang = descriptor.scriptSetup
-          && compileScript(descriptor, { id }).attrs.lang
     const s = new MagicString(code)
+    const normalScript = addNormalScript(sfc, s)
+    const scriptOffset = normalScript.start()
     s.appendLeft(
-      0,
-`<script${lang ? ` lang="${lang}"` : ''}>
-import { defineComponent } from 'vue'
+      scriptOffset,
+`\nimport { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: '${name}'
-})
-</script>\n`,
+})`,
     )
-    return {
-      code: s.toString(),
-      map: s.generateMap({
-        source: id,
-        includeContent: true,
-        hires: true,
-      }),
-    }
+    normalScript.end()
+
+    
+  return getTransformResult(s, id)
   },
 }))
