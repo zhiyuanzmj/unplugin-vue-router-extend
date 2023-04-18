@@ -19,7 +19,7 @@ export function getNuxtStyleRouteName(node: TreeNode): string {
 
   const parent = node.parent
   return (
-    (parent && !parent.isRoot()
+    ((parent && !parent.isRoot())
       ? getNuxtStyleRouteName(parent).replace(/\/$/, '')
       : '') + name
   ).replace(/^-|-$/, '')

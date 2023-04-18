@@ -49,7 +49,7 @@ export default defineConfig({
   plugins: [
     /** */
     VueRouter({
-       getRouteName: (node: any) => {
+      getRouteName: (node: any) => {
         if (!routeMap.size) {
           for (const [key, value] of node.parent?.map)
             routeMap.set(key, value)

@@ -1,6 +1,7 @@
 import { createUnplugin } from 'unplugin'
 import { MagicString, addNormalScript, getTransformResult, parseSFC } from '@vue-macros/common'
 import type { Options } from './types'
+
 export * from './utils'
 
 export default createUnplugin<Options>(options => ({
@@ -30,7 +31,6 @@ export default /* @__PURE__ */ defineComponent({
     )
     normalScript.end()
 
-    
-  return getTransformResult(s, id)
+    return getTransformResult(s, id)
   },
 }))
