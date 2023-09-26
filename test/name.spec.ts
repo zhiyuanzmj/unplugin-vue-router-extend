@@ -48,8 +48,7 @@ describe('generate component name', async () => {
           }),
           {
             name: 'to-string',
-            transform: code =>
-              `export default \`${code.replace(/`/g, '\\`')}\``,
+            transform: code => `export default \`${code.replace(/`/g, '\\`')}\``,
           },
         ],
       })

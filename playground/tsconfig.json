@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "esnext",
     "lib": ["esnext", "DOM"],
+    "module": "esnext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
     "types": [
       "./src/typed-router.d.ts"
-    ]
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true
   }
 }

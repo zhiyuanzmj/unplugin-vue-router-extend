@@ -3,8 +3,8 @@ import Inspect from 'vite-plugin-inspect'
 import VueRouter from 'unplugin-vue-router/vite'
 import Vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import VueRouterExtend from '../src/vite'
 import { getFileBasedRouteName } from 'unplugin-vue-router'
+import VueRouterExtend from '../src/vite'
 
 const routeMap = new Map()
 
