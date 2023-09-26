@@ -5,12 +5,12 @@
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite"
   },
   "dependencies": {
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.2.0",
-    "@vitejs/plugin-vue-jsx": "^2.1.1",
-    "vite": "^3.1.4",
-    "vite-plugin-inspect": "^0.7.4"
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "vite": "^4.4.9",
+    "vite-plugin-inspect": "^0.7.38"
   }
 }
