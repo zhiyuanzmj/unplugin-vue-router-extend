@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/unplugin-vue-router-extend?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-vue-router-extend)
 
-- Automatically generate component's name based on `route.name`.  
+- Automatically generate component's name based on `route.name`.
 
 <img width="1255" alt="image" src="https://user-images.githubusercontent.com/32807958/205870943-dd2b6094-a4dd-4927-a417-57350fd7773b.png">
 
@@ -41,8 +41,8 @@ npm i unplugin-vue-router-extend
 // vite.config.ts
 // import { getPascalCaseRouteName } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
-import VueRouterExtend from 'unplugin-vue-router-extend/vite'
 import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
+import VueRouterExtend from 'unplugin-vue-router-extend/vite'
 
 const routeMap = new Map()
 export default defineConfig({
@@ -64,7 +64,6 @@ export default defineConfig({
 })
 ```
 
-
 Example: [`playground/`](./playground/)
 
 <br>
@@ -75,8 +74,8 @@ Example: [`playground/`](./playground/)
 ```ts
 // rollup.config.js
 import VueRouter from 'unplugin-vue-router/vite'
-import VueRouterExtend from 'unplugin-vue-router-extend/vite'
 import { getNuxtStyleRouteName } from 'unplugin-vue-router-extend'
+import VueRouterExtend from 'unplugin-vue-router-extend/vite'
 
 const routeMap = new Map()
 export default {
@@ -99,7 +98,6 @@ export default {
 ```
 
 <br></details>
-
 
 <details>
 <summary>Webpack</summary><br>
