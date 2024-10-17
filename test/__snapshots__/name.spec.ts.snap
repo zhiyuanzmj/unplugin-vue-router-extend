@@ -6,7 +6,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'all'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>...all route</div>
 </template>
@@ -23,7 +23,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'sensor'
 })
-<\\\\/script>
+<\\/script>
 <template>
   nested dynamic view:
   <router-view />
@@ -41,7 +41,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'sensor-current'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <p>/[sensor]/current.vue</p>
 </template>
@@ -69,7 +69,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'about/'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>
     nested about view:
@@ -77,7 +77,7 @@ export default /* @__PURE__ */ defineComponent({
   </div>
 </template>
 
-<route lang=\\"yml\\">
+<route lang="yml">
 meta:
   lang: yml
 </route>
@@ -89,24 +89,22 @@ export {
 `;
 
 exports[`generate component name > about/[id].vue 1`] = `
-"const e = \`<script lang=\\"ts\\">
+"const e = \`<script lang="ts">
 import { defineComponent } from 'vue'
-export default /* @__PURE__ */ defineComponent({
-  name: 'about-user-id'
-})
-<\\\\/script>
-<script setup lang=\\"ts\\">
-defineProps({
-  id: String,
-})
-<\\\\/script>
+
+export default defineComponent({
+  props: {
+    id: String,
+  },
+ name: 'about-user-id'})
+<\\/script>
 
 <template>
   <div>
     <div>
       about/[id].vue: {{ id }}
     </div>
-    <router-link to=\\"/about/1b234bk12b3/more\\">
+    <router-link to="/about/1b234bk12b3/more">
       more deep
     </router-link>
     <router-view />
@@ -134,9 +132,9 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'about-id-more'
 })
-<\\\\/script>
+<\\/script>
 <template>
-  <div class=\\"deep-more\\">
+  <div class="deep-more">
     deep nested: about/[id]/more.vue
   </div>
 </template>
@@ -153,9 +151,9 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'about-id-nested'
 })
-<\\\\/script>
+<\\/script>
 <template>
-  <div class=\\"deep-nested\\">
+  <div class="deep-nested">
     deep nested: about/[id]/nested.vue
   </div>
 </template>
@@ -172,11 +170,11 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'about'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>
     about/index.vue
-    <router-link to=\\"/about/1b234bk12b3\\">
+    <router-link to="/about/1b234bk12b3">
       id: 1b234bk12b3
     </router-link>
   </div>
@@ -189,17 +187,17 @@ export {
 `;
 
 exports[`generate component name > blog/[id].vue 1`] = `
-"const e = \`<script lang=\\"tsx\\">
+"const e = \`<script lang="tsx">
 import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'blog-id'
 })
-<\\\\/script>
-<script setup lang=\\"tsx\\">
+<\\/script>
+<script setup lang="tsx">
 defineProps({
   id: String,
 })
-<\\\\/script>
+<\\/script>
 
 <template>
   <div>
@@ -212,9 +210,9 @@ defineProps({
 
 <route>
 {
-  \\"name\\": \\"blog-id\\",
-  \\"meta\\":{
-    \\"requiresAuth\\": false
+  "name": "blog-id",
+  "meta":{
+    "requiresAuth": false
   }
 }
 </route>
@@ -231,17 +229,17 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'blog'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>
     blog/index.vue
-    <router-link to=\\"/blog/1b234bk12b3\\">
+    <router-link to="/blog/1b234bk12b3">
       id: 1b234bk12b3
     </router-link> |
-    <router-link to=\\"/blog/today\\">
+    <router-link to="/blog/today">
       today
     </router-link> |
-    <router-link to=\\"/blog/today/xxx\\">
+    <router-link to="/blog/today/xxx">
       child - not found
     </router-link>
   </div>
@@ -259,7 +257,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'blog-today-all'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>blog/today ...all route</div>
 </template>
@@ -276,7 +274,7 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'blog-today'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>
     blog/today/index.vue
@@ -295,12 +293,12 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'components'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <h1>Test Components name</h1>
 </template>
 
-<route lang=\\"yaml\\">
+<route lang="yaml">
 meta:
   lang: yaml
 </route>
@@ -317,44 +315,58 @@ import { defineComponent } from 'vue'
 export default /* @__PURE__ */ defineComponent({
   name: 'index'
 })
-<\\\\/script>
+<\\/script>
 <template>
   <div>
     <p>index.vue</p>
-    <router-link to=\\"/blog\\">
+    <router-link to="/blog">
       blog
     </router-link> |
-    <router-link to=\\"/about\\">
+    <router-link to="/about">
       about
     </router-link> |
-    <router-link to=\\"/components\\">
+    <router-link to="/components">
       components
     </router-link> |
-    <router-link to=\\"/markdown\\">
+    <router-link to="/markdown">
       markdown
     </router-link> |
-    <router-link to=\\"/xxx/xxx\\">
+    <router-link to="/xxx/xxx">
       not exists
     </router-link> |
-    <router-link to=\\"/features/dashboard\\">
+    <router-link to="/features/dashboard">
       features:dashboard
     </router-link> |
-    <router-link to=\\"/features/admin\\">
+    <router-link to="/features/admin">
       features:admin
     </router-link> |
-    <router-link to=\\"/admin\\">
+    <router-link to="/admin">
       admin
     </router-link>
   </div>
 </template>
 
-<route lang=\\"json\\">
+<route lang="json">
 {
-  \\"meta\\": {
-    \\"requiresAuth\\": false
+  "meta": {
+    "requiresAuth": false
   }
 }
 </route>
+\`;
+export {
+  e as default
+};
+"
+`;
+
+exports[`generate component name > jsx.jsx 1`] = `
+"const e = \`import { defineComponent } from "vue";
+export default defineComponent({
+  setup() {
+    return () => /* @__PURE__ */ React.createElement("div", null, "TestJSX");
+  }
+});
 \`;
 export {
   e as default

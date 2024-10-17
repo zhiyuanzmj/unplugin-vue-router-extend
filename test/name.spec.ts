@@ -1,15 +1,15 @@
 import { resolve } from 'node:path'
-import { describe, expect, it } from 'vitest'
 import glob from 'fast-glob'
-import { build } from 'vite'
 import VueRouter from 'unplugin-vue-router/vite'
-import vueRouterExtend from '../src/vite'
+import { build } from 'vite'
+import { describe, expect, it } from 'vitest'
 import { getNuxtStyleRouteName } from '../src'
+import vueRouterExtend from '../src/vite'
 
 describe('generate component name', async () => {
   const root = resolve(__dirname, '../playground/src/pages')
 
-  const files = await glob('./**/*.{vue,js,ts}', {
+  const files = await glob('./**/*.{vue,jsx,tsx}', {
     cwd: root,
     onlyFiles: true,
   })
