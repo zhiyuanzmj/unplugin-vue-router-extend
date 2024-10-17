@@ -52,20 +52,25 @@ function transformAST(ast: Program, name: string, s: MagicString, offset = 0) {
       && stmt.declaration.callee.name === 'defineComponent'
     ) {
       const argument = stmt.declaration.arguments.find(i => i.type === 'ObjectExpression')
-      if (argument && !argument.properties?.find(
-        prop =>
-          prop.type === 'ObjectProperty'
-          && prop.key.type === 'Identifier'
-          && prop.key.name === 'name',
-      )) {
-        s.appendLeft(
-          offset + argument.end! - 1,
-          `${
-            !argument.extra?.trailingComma && argument.properties.length
-              ? ','
-              : ''
-          } name: '${name}'`,
-        )
+      if (argument) {
+        if (!argument.properties?.find(
+          prop =>
+            prop.type === 'ObjectProperty'
+            && prop.key.type === 'Identifier'
+            && prop.key.name === 'name',
+        )) {
+          s.appendLeft(
+            offset + argument.end! - 1,
+            `${
+              !argument.extra?.trailingComma && argument.properties.length
+                ? ','
+                : ''
+            } name: '${name}'`,
+          )
+        }
+      }
+      else {
+        s.appendRight(offset + stmt.declaration.end! - 1, `, { name: '${name}' }`)
       }
     }
   }
